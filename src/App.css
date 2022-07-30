@@ -1,38 +1,92 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap");
+
 .App {
-  text-align: center;
-}
+  height: 100vh;
+  width: 100vw;
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
+  background: radial-gradient(
+    ellipse,
+    rgba(44, 112, 42, 1) 0%,
+    rgba(44, 112, 42, 1) 50%,
+    rgba(22, 52, 22, 1) 100%
+  );
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  align-items: center;
+  flex-direction: column;
+
+  font-family: "Montserrat";
+  color: #fbdd11;
 }
 
-.App-link {
-  color: #61dafb;
+.CountdownContainer {
+  height: 60%;
+  width: 100%;
+  display: flex;
+
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.BananoContainer {
+  height: 40%;
+  width: 100%;
+  display: flex;
+
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  background: #143514;
+}
+
+.Header {
+  font-size: 60px;
+  font-weight: 500;
+}
+
+.Date {
+  font-size: 25px;
+  font-weight: 500;
+}
+
+.Countdown {
+  margin-top: 32px;
+
+  font-size: 90px;
+  font-weight: 700;
+
+  border-radius: 0.4em;
+  border: 8px solid #fbdd11;
+  padding: 0 25px;
+
+  font-variant-numeric: tabular-nums;
+}
+
+.Address {
+  font-weight: 600;
+  font-size: 20px;
+}
+
+.WaveDivider {
+  position: absolute;
+  bottom: 40%;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+  transform: rotate(180deg);
+}
+
+.WaveDivider svg {
+  position: relative;
+  display: block;
+  width: calc(197% + 1.3px);
+  height: 58px;
+}
+
+.WaveDivider .shape-fill {
+  fill: #143514;
 }
