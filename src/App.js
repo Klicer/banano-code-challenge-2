@@ -38,7 +38,49 @@ function generateBananoSeed() {
   return uint8_to_hex(uint8);
 }
 
-function App() {
+const Address = ({ address }) => {
+  const [text, setText] = React.useState(address);
+  const [copyMsg, toggleCopyMsg] = React.useState(false);
+  return (
+    <div
+      className="Address"
+      style={{
+        fontFamily: "Overpass Mono",
+        cursor: copyMsg ? "default" : "pointer",
+      }}
+      onClick={() => {
+        if (copyMsg) return;
+
+        navigator.clipboard.writeText(address);
+
+        toggleCopyMsg(true);
+        setTimeout(() => {
+          toggleCopyMsg(false);
+        }, 1000);
+      }}
+    >
+      <div
+        style={{
+          display: "flex",
+          width: "100%",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        {!copyMsg && (
+          <img
+            src={`https://monkey.banano.cc/api/v1/monkey/${address}`}
+            height="30px"
+            width="30px"
+          />
+        )}
+        <div>{copyMsg ? "Copied wallet address to clipboard!" : address}</div>
+      </div>
+    </div>
+  );
+};
+
+const App = () => {
   const [randomSeed, setRandomSeed] = React.useState("");
   const [addresses, setAddresses] = React.useState([]);
 
@@ -60,7 +102,7 @@ function App() {
     if (minutes < 10) minutes = "0" + minutes;
     if (seconds < 10) seconds = "0" + seconds;
 
-    setCountdown(`${days}:${hours}:${minutes}:${seconds}`);
+    setCountdown(`${days} : ${hours} : ${minutes} : ${seconds}`);
   };
 
   React.useEffect(() => {
@@ -96,22 +138,29 @@ function App() {
         </div>
       </div>
       <div className="BananoContainer">
-        <div className="Header" style={{ fontSize: "16px", color: "#d7bd10" }}>
-          Randomly Generated Banano Seed
+        <div
+          className="Header"
+          style={{
+            fontSize: "16px",
+            color: "#d7bd10",
+            fontFamily: "Overpass Mono",
+          }}
+        >
+          Freshly Grown Banano Tree 🌴
         </div>
         <div className="Address">{randomSeed}</div>
         <div
           style={{ marginTop: "10px", fontSize: "16px", color: "#d7bd10" }}
           className="Header"
         >
-          First 5 Addresses From The Seed
+          5 Ripe Banano Wallets, Ready For Harvest
         </div>
-        {addresses.map((address) => {
-          return <div className="Address">{address}</div>;
-        })}
+        {addresses.map((address) => (
+          <Address address={address} />
+        ))}
       </div>
     </div>
   );
-}
+};
 
 export default App;

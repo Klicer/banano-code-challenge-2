@@ -1,4 +1,9 @@
-@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@700&family=Montserrat:wght@400;500;600;700&family=Overpass+Mono:wght@400;500;600;700&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+}
 
 .App {
   height: 100vh;
@@ -45,11 +50,13 @@
 .Header {
   font-size: 60px;
   font-weight: 500;
+  font-family: "Montserrat";
 }
 
 .Date {
-  font-size: 25px;
+  font-size: 23px;
   font-weight: 500;
+  color: #d3bb1c;
 }
 
 .Countdown {
@@ -59,10 +66,11 @@
   font-weight: 700;
 
   border-radius: 0.4em;
-  border: 8px solid #fbdd11;
+  border: 5px solid #fbdd11;
   padding: 0 25px;
 
   font-variant-numeric: tabular-nums;
+  font-family: "Inter";
 }
 
 .Address {
@@ -83,8 +91,8 @@
 .WaveDivider svg {
   position: relative;
   display: block;
-  width: calc(197% + 1.3px);
-  height: 58px;
+  width: calc(139% + 1.3px);
+  height: 53px;
 }
 
 .WaveDivider .shape-fill {
