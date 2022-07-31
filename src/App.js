@@ -39,7 +39,6 @@ function generateBananoSeed() {
 }
 
 const Address = ({ address }) => {
-  const [text, setText] = React.useState(address);
   const [copyMsg, toggleCopyMsg] = React.useState(false);
   return (
     <div
