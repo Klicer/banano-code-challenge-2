@@ -46,6 +46,7 @@ const Address = ({ address }) => {
       style={{
         fontFamily: "Overpass Mono",
         cursor: copyMsg ? "default" : "pointer",
+        userSelect: "none",
       }}
       onClick={() => {
         if (copyMsg) return;
@@ -113,7 +114,7 @@ const App = () => {
     setRandomSeed(bananoSeed);
 
     getAddresses(bananoSeed).then((res) => setAddresses(res));
-  });
+  }, []);
 
   return (
     <div className="App">
@@ -145,14 +146,25 @@ const App = () => {
             fontFamily: "Overpass Mono",
           }}
         >
-          Freshly Grown Banano Tree 🌴
+          Freshly Grown Banano Tree 🌴 (Click to Regenerate)
         </div>
-        <div className="Address">{randomSeed}</div>
+        <div
+          className="Address"
+          style={{ cursor: "pointer", userSelect: "none" }}
+          onClick={() => {
+            const bananoSeed = generateBananoSeed();
+            setRandomSeed(bananoSeed);
+
+            getAddresses(bananoSeed).then((res) => setAddresses(res));
+          }}
+        >
+          {randomSeed}
+        </div>
         <div
           style={{ marginTop: "10px", fontSize: "16px", color: "#d7bd10" }}
           className="Header"
         >
-          5 Ripe Banano Wallets, Ready For Harvest
+          5 Ripe Banano Wallets, Ready For Harvest (Click to Copy)
         </div>
         {addresses.map((address) => (
           <Address address={address} />
